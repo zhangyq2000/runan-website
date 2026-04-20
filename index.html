@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海润安医学科技有限公司 | Shanghai Runan Medical Technology</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue-900:#0a1628;
+  --blue-800:#0f2744;
+  --blue-700:#1a3a6b;
+  --blue-600:#1e4d9c;
+  --blue-500:#2563eb;
+  --blue-400:#3b82f6;
+  --blue-300:#60a5fa;
+  --blue-200:#93c5fd;
+  --blue-100:#dbeafe;
+  --cyan-400:#22d3ee;
+  --white:#ffffff;
+  --gray-100:#f8fafc;
+  --gray-200:#e2e8f0;
+  --gray-400:#94a3b8;
+  --gray-600:#475569;
+  --gray-800:#1e293b;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif;
+  background:var(--blue-900);
+  color:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+body.en{font-family:system-ui,-apple-system,Helvetica,Arial,sans-serif}
+
+/* ── DNA Helix Background ── */
+.dna-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;opacity:.06;
+}
+.dna-strand{
+  position:absolute;
+  animation: dnaFloat 20s linear infinite;
+}
+@keyframes dnaFloat{
+  0%{transform:translateY(-100%)}
+  100%{transform:translateY(100vh)}
+}
+.dna-dot{
+  position:absolute;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--blue-400);
+}
+.dna-line{
+  position:absolute;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue-400),transparent);
+}
+
+/* ── Nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(10,22,40,.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(59,130,246,.15);
+  padding:0 40px;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-size:1.1rem;font-weight:700;
+  color:var(--blue-200);text-decoration:none;
+  letter-spacing:.5px;
+}
+.nav-logo-icon{
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--blue-500),var(--cyan-400));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-links a{
+  color:var(--gray-400);text-decoration:none;
+  padding:6px 14px;border-radius:6px;
+  font-size:.875rem;transition:all .2s;
+}
+.nav-links a:hover,.nav-links a.active{
+  color:var(--white);background:rgba(59,130,246,.15);
+}
+.lang-toggle{
+  display:flex;align-items:center;gap:4px;
+  background:rgba(59,130,246,.1);
+  border:1px solid rgba(59,130,246,.3);
+  border-radius:20px;padding:3px;
+}
+.lang-toggle button{
+  background:none;border:none;cursor:pointer;
+  padding:4px 12px;border-radius:16px;
+  color:var(--gray-400);font-size:.8rem;
+  transition:all .2s;
+}
+.lang-toggle button.active{
+  background:var(--blue-500);color:var(--white);
+}
+.mobile-menu-btn{
+  display:none;background:none;border:none;
+  cursor:pointer;padding:8px;
+}
+.mobile-menu-btn span{
+  display:block;width:22px;height:2px;
+  background:var(--blue-200);margin:4px 0;
+  transition:all .3s;
+}
+
+/* ── Page Sections ── */
+.page{display:none;min-height:100vh;position:relative;z-index:1}
+.page.active{display:block}
+
+/* ── Hero ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  padding:80px 40px 60px;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(37,99,235,.08) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.6) 0%,transparent 70%);
+}
+.hero-glow{
+  position:absolute;top:20%;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(37,99,235,.25),transparent 70%);
+  filter:blur(60px);
+}
+.hero-content{
+  max-width:1200px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(37,99,235,.15);
+  border:1px solid rgba(37,99,235,.3);
+  border-radius:20px;padding:5px 14px;
+  font-size:.8rem;color:var(--blue-200);
+  margin-bottom:24px;
+}
+.hero-badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--cyan-400);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{
+  font-size:3.2rem;font-weight:800;line-height:1.2;
+  margin-bottom:20px;
+  background:linear-gradient(135deg,var(--white) 40%,var(--blue-300));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-subtitle{
+  font-size:1.15rem;color:var(--gray-400);margin-bottom:32px;
+  max-width:520px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue-500),var(--blue-600));
+  color:var(--white);border:none;
+  padding:12px 28px;border-radius:8px;
+  font-size:.95rem;font-weight:600;cursor:pointer;
+  transition:all .3s;box-shadow:0 4px 20px rgba(37,99,235,.3);
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(37,99,235,.4);
+}
+.btn-secondary{
+  background:rgba(59,130,246,.1);
+  border:1px solid rgba(59,130,246,.4);
+  color:var(--blue-200);padding:12px 28px;
+  border-radius:8px;font-size:.95rem;cursor:pointer;
+  transition:all .3s;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-secondary:hover{
+  background:rgba(59,130,246,.2);
+  color:var(--white);
+}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  margin-top:48px;padding-top:32px;
+  border-top:1px solid rgba(59,130,246,.2);
+}
+.stat-item{text-align:center}
+.stat-num{
+  font-size:2rem;font-weight:800;
+  background:linear-gradient(135deg,var(--cyan-400),var(--blue-400));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.stat-label{font-size:.8rem;color:var(--gray-400);margin-top:2px}
+
+/* Hero Visual */
+.hero-visual{
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.dna-orbit{
+  width:380px;height:380px;border-radius:50%;
+  border:1px solid rgba(59,130,246,.2);
+  position:relative;animation:orbitSpin 30s linear infinite;
+}
+@keyframes orbitSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.orbit-ring{
+  position:absolute;border-radius:50%;
+  border:1px dashed rgba(59,130,246,.25);
+}
+.orbit-ring-1{inset:0;animation:orbitSpin 20s linear infinite reverse}
+.orbit-ring-2{inset:40px;animation:orbitSpin 15s linear infinite}
+.orbit-dot{
+  position:absolute;width:12px;height:12px;
+  border-radius:50%;background:var(--cyan-400);
+  box-shadow:0 0 20px var(--cyan-400);
+}
+.orbit-dot:nth-child(1){top:-6px;left:calc(50% - 6px)}
+.orbit-dot:nth-child(2){bottom:60px;right:60px;background:var(--blue-400)}
+.orbit-dot:nth-child(3){top:calc(50% - 6px);right:-6px;background:var(--blue-300)}
+.dna-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:120px;height:120px;
+  background:linear-gradient(135deg,var(--blue-700),var(--blue-800));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:2px solid rgba(59,130,246,.3);
+  box-shadow:0 0 60px rgba(37,99,235,.3);
+}
+.dna-center-inner{
+  font-size:2.5rem;text-align:center;
+  line-height:1.1;
+}
+.dna-center span{
+  font-size:.55rem;color:var(--blue-200);display:block;
+  margin-top:2px;
+}
+
+/* ── Section Common ── */
+section{padding:80px 40px}
+.section-label{
+  font-size:.75rem;text-transform:uppercase;letter-spacing:2px;
+  color:var(--cyan-400);margin-bottom:10px;
+}
+.section-title{
+  font-size:2.2rem;font-weight:800;margin-bottom:14px;
+  background:linear-gradient(135deg,var(--white),var(--blue-200));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.section-desc{color:var(--gray-400);max-width:600px;margin-bottom:50px}
+
+/* ── Services ── */
+#services{background:var(--blue-800)}
+.services-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+}
+.service-card{
+  background:rgba(15,39,68,.7);
+  border:1px solid rgba(59,130,246,.15);
+  border-radius:16px;padding:36px;
+  transition:all .4s;position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue-500),var(--cyan-400));
+  transform:scaleX(0);transition:transform .4s;transform-origin:left;
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{
+  border-color:rgba(59,130,246,.4);
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+.service-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(34,211,238,.1));
+  border:1px solid rgba(59,130,246,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:20px;
+}
+.service-card h3{font-size:1.3rem;font-weight:700;margin-bottom:10px}
+.service-card p{color:var(--gray-400);font-size:.9rem;margin-bottom:20px;line-height:1.7}
+.service-features{list-style:none;display:flex;flex-direction:column;gap:8px}
+.service-features li{
+  color:var(--gray-400);font-size:.85rem;
+  display:flex;align-items:center;gap:8px;
+}
+.service-features li::before{
+  content:'✓';color:var(--cyan-400);font-weight:700;
+}
+.service-tag{
+  display:inline-block;background:rgba(37,99,235,.12);
+  border:1px solid rgba(37,99,235,.25);
+  border-radius:4px;padding:2px 8px;
+  font-size:.72rem;color:var(--blue-200);margin-top:12px;
+}
+
+/* ── Process ── */
+#process{background:var(--blue-900)}
+.process-flow{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  position:relative;
+}
+.process-flow::before{
+  content:'';position:absolute;top:36px;left:10%;right:10%;
+  height:2px;
+  background:linear-gradient(90deg,var(--blue-500),var(--cyan-400),var(--blue-500),var(--cyan-400));
+}
+.process-step{
+  text-align:center;padding:0 16px;position:relative;
+}
+.step-num{
+  width:72px;height:72px;border-radius:50%;
+  background:var(--blue-800);
+  border:2px solid var(--blue-500);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;font-weight:800;
+  margin:0 auto 20px;
+  color:var(--cyan-400);
+  position:relative;z-index:1;
+}
+.step-num.active{border-color:var(--cyan-400);box-shadow:0 0 30px rgba(34,211,238,.3)}
+.process-step h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+.process-step p{color:var(--gray-400);font-size:.8rem;line-height:1.5}
+
+/* ── Products / Order ── */
+#products{background:var(--blue-800)}
+.products-container{max-width:1200px;margin:0 auto}
+.products-table-wrap{
+  background:rgba(10,22,40,.6);
+  border:1px solid rgba(59,130,246,.15);
+  border-radius:12px;overflow:hidden;
+}
+.products-table{
+  width:100%;border-collapse:collapse;
+}
+.products-table thead{
+  background:rgba(37,99,235,.12);
+}
+.products-table th{
+  padding:14px 20px;text-align:left;
+  font-size:.8rem;font-weight:600;color:var(--blue-200);
+  border-bottom:1px solid rgba(59,130,246,.2);
+  letter-spacing:.5px;
+}
+.products-table td{
+  padding:14px 20px;font-size:.875rem;
+  border-bottom:1px solid rgba(59,130,246,.08);
+  color:var(--gray-200);
+}
+.products-table tr:last-child td{border-bottom:none}
+.products-table tr:hover td{background:rgba(37,99,235,.05)}
+.price-tag{color:var(--cyan-400);font-weight:600}
+.order-btn{
+  background:linear-gradient(135deg,var(--blue-500),var(--blue-600));
+  color:var(--white);border:none;
+  padding:8px 18px;border-radius:6px;
+  font-size:.8rem;cursor:pointer;
+  transition:all .2s;
+}
+.order-btn:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(37,99,235,.4)}
+
+/* ── About ── */
+#about{background:var(--blue-900)}
+.about-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.about-text p{
+  color:var(--gray-400);margin-bottom:20px;font-size:.95rem;line-height:1.8;
+}
+.about-highlights{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  margin-top:30px;
+}
+.highlight-item{
+  background:rgba(15,39,68,.6);
+  border:1px solid rgba(59,130,246,.15);
+  border-radius:10px;padding:20px;
+  text-align:center;
+}
+.highlight-item .num{
+  font-size:2rem;font-weight:800;
+  background:linear-gradient(135deg,var(--cyan-400),var(--blue-400));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.highlight-item .lbl{
+  font-size:.8rem;color:var(--gray-400);margin-top:4px;
+}
+.about-img{
+  background:linear-gradient(135deg,var(--blue-800),var(--blue-700));
+  border:1px solid rgba(59,130,246,.2);
+  border-radius:16px;padding:40px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:360px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.about-img::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 30%,rgba(37,99,235,.15),transparent 60%);
+}
+.about-img-icon{font-size:4rem;margin-bottom:16px}
+.about-img h3{font-size:1.2rem;margin-bottom:8px}
+.about-img p{color:var(--gray-400);font-size:.85rem}
+.cert-badges{
+  display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;justify-content:center;
+}
+.cert-badge{
+  background:rgba(37,99,235,.1);
+  border:1px solid rgba(37,99,235,.3);
+  border-radius:6px;padding:6px 14px;
+  font-size:.75rem;color:var(--blue-200);
+}
+
+/* ── Contact ── */
+#contact{background:var(--blue-800)}
+.contact-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;
+}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-item{
+  display:flex;gap:16px;align-items:flex-start;
+}
+.contact-icon{
+  width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  background:rgba(37,99,235,.15);
+  border:1px solid rgba(37,99,235,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.contact-item h4{font-size:.9rem;font-weight:600;margin-bottom:3px}
+.contact-item p{color:var(--gray-400);font-size:.85rem}
+.contact-form{
+  background:rgba(10,22,40,.5);
+  border:1px solid rgba(59,130,246,.15);
+  border-radius:16px;padding:36px;
+}
+.form-group{margin-bottom:20px}
+.form-group label{
+  display:block;font-size:.8rem;color:var(--blue-200);
+  margin-bottom:6px;font-weight:500;
+}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;background:rgba(15,39,68,.6);
+  border:1px solid rgba(59,130,246,.2);
+  border-radius:8px;padding:10px 14px;
+  color:var(--white);font-size:.9rem;
+  font-family:inherit;
+  transition:border-color .2s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+  outline:none;border-color:var(--blue-500);
+}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{
+  width:100%;background:linear-gradient(135deg,var(--blue-500),var(--blue-600));
+  color:var(--white);border:none;
+  padding:14px;border-radius:8px;
+  font-size:1rem;font-weight:600;cursor:pointer;
+  transition:all .3s;
+  box-shadow:0 4px 20px rgba(37,99,235,.3);
+}
+.form-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(37,99,235,.4);
+}
+.form-note{font-size:.75rem;color:var(--gray-400);margin-top:10px;text-align:center}
+
+/* ── Footer ── */
+footer{
+  background:var(--blue-900);
+  border-top:1px solid rgba(59,130,246,.1);
+  padding:40px;
+  text-align:center;
+}
+.footer-logo{
+  font-size:1.1rem;font-weight:700;color:var(--blue-200);
+  margin-bottom:10px;
+}
+footer p{color:var(--gray-400);font-size:.8rem}
+footer a{color:var(--blue-300);text-decoration:none}
+
+/* ── Animations ── */
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s ease}
+.reveal.visible{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.fade-up{animation:fadeUp .8s ease forwards}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;text-align:center}
+  .hero-visual{display:none}
+  .hero-btns{justify-content:center}
+  .hero-stats{grid-template-columns:repeat(3,1fr)}
+  .services-grid{grid-template-columns:1fr}
+  .process-flow{grid-template-columns:repeat(2,1fr);gap:30px}
+  .process-flow::before{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  nav{padding:0 20px}
+  section{padding:60px 20px}
+  nav .nav-links{display:none}
+  .mobile-menu-btn{display:block}
+  .hero h1{font-size:2.2rem}
+}
+@media(max-width:600px){
+  .hero-stats{grid-template-columns:1fr;gap:10px}
+  .form-row{grid-template-columns:1fr}
+  .about-highlights{grid-template-columns:1fr}
+  .products-table{font-size:.8rem}
+  .products-table th,.products-table td{padding:10px 12px}
+}
+
+/* ── Language Switching ── */
+[lang="zh"],.zh{display:block}
+[lang="en"],.en{display:none}
+body.en [lang="zh"],body.en .zh{display:none}
+body.en [lang="en"],body.en .en{display:block}
+</style>
+</head>
+<body>
+<!-- DNA Background -->
+<div class="dna-bg" id="dnaBg"></div>
+
+<!-- Navigation -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">🧬</div>
+    <span class="zh">上海润安医学</span>
+    <span class="en">Runan Medical</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="active" data-page="home" onclick="showPage('home')">
+      <span class="zh">首页</span><span class="en">Home</span>
+    </a>
+    <a href="#" data-page="services" onclick="showPage('services')">
+      <span class="zh">服务</span><span class="en">Services</span>
+    </a>
+    <a href="#" data-page="products" onclick="showPage('products')">
+      <span class="zh">产品下单</span><span class="en">Order</span>
+    </a>
+    <a href="#" data-page="about" onclick="showPage('about')">
+      <span class="zh">关于我们</span><span class="en">About</span>
+    </a>
+    <a href="#" data-page="contact" onclick="showPage('contact')">
+      <span class="zh">联系我们</span><span class="en">Contact</span>
+    </a>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px">
+    <div class="lang-toggle">
+      <button class="active" id="langZh" onclick="setLang('zh')">中文</button>
+      <button id="langEn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════ HOME PAGE ══════════ -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span class="zh">专注基因合成 · 助力生命科学</span>
+          <span class="en">Gene Synthesis · Accelerating Life Science</span>
+        </div>
+        <h1 lang="zh">精准基因合成<br>加速科研创新</h1>
+        <h1 lang="en">Precision Gene Synthesis<br>Accelerating Research</h1>
+        <p class="hero-subtitle">
+          <span class="zh">上海润安医学科技提供高保真基因片段合成、全基因合成及基因克隆服务，覆盖从毫克到克级规模，交付周期短，质量稳定可靠，广泛服务于科研院所、药企及生物技术公司。</span>
+          <span class="en">Shanghai Runan Medical Technology provides high-fidelity gene fragment synthesis, whole-gene synthesis, and gene cloning services. From milligram to gram scale, fast turnaround, reliable quality — serving research institutions, pharma, and biotech companies worldwide.</span>
+        </p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('products')">
+            <span class="zh">立即下单</span><span class="en">Order Now</span> →
+          </button>
+          <button class="btn-secondary" onclick="showPage('services')">
+            <span class="zh">了解服务</span><span class="en">Our Services</span>
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">99.9%</div>
+            <div class="stat-label zh">序列准确率</div>
+            <div class="stat-label en">Accuracy</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">5-7</div>
+            <div class="stat-label zh">工作日交付</div>
+            <div class="stat-label en">Business Days</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">10K+</div>
+            <div class="stat-label zh">成功案例</div>
+            <div class="stat-label en">Projects Done</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="dna-orbit">
+          <div class="orbit-ring orbit-ring-1">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="orbit-ring orbit-ring-2">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="dna-center">
+            <div class="dna-center-inner">
+              🧬
+              <span class="zh">润安基因</span>
+              <span class="en">Runan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home Services Preview -->
+  <section id="home-services-preview" style="background:var(--blue-800);padding:80px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:50px">
+        <div class="section-label">
+          <span class="zh">核心服务</span><span class="en">Core Services</span>
+        </div>
+        <h2 class="section-title">
+          <span class="zh">从基因设计到交付的全流程解决方案</span>
+          <span class="en">End-to-End Gene Synthesis Solutions</span>
+        </h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" style="cursor:pointer" onclick="showPage('services')">
+          <div class="service-icon">🔬</div>
+          <h3 lang="zh">基因片段合成</h3>
+          <h3 lang="en">Gene Fragment Synthesis</h3>
+          <p class="zh">根据客户提供的序列，合成1.5kb以内的双链DNA片段。高保真率、快速交付。适用于基因突变构建、SNP分析、探针制备等多种应用场景。</p>
+          <p class="en">Synthesize double-stranded DNA fragments up to 1.5kb from your provided sequence. High fidelity, fast delivery. Ideal for mutation construction, SNP analysis, and probe preparation.</p>
+          <ul class="service-features zh">
+            <li>长度范围：50 bp - 1.5 kb</li>
+            <li>保真率：99.9%+（Sanger测序验证）</li>
+            <li>常规5-7个工作日交付</li>
+            <li>支持任意碱基修饰</li>
+          </ul>
+          <ul class="service-features en">
+            <li>Length: 50 bp - 1.5 kb</li>
+            <li>Fidelity: 99.9%+ (Sanger verified)</li>
+            <li>5-7 business days turnaround</li>
+            <li>Any base modification supported</li>
+          </ul>
+          <span class="service-tag zh">Gene Fragment</span>
+          <span class="service-tag en">Fragment</span>
+        </div>
+        <div class="service-card" style="cursor:pointer" onclick="showPage('services')">
+          <div class="service-icon">🧫</div>
+          <h3 lang="zh">基因克隆 / 亚克隆</h3>
+          <h3 lang="en">Gene Cloning & Subcloning</h3>
+          <p class="zh">提供从基因片段到表达载体的完整克隆服务，包括普通克隆、 Gibson Assembly、无缝克隆等。支持多种表达系统（细菌、酵母、哺乳动物细胞）。</p>
+          <p class="en">Complete cloning from gene fragment to expression vector, including conventional cloning, Gibson Assembly, and seamless cloning. Supporting multiple expression systems (E. coli, yeast, mammalian cells).</p>
+          <ul class="service-features zh">
+            <li>Gibson Assembly 无缝克隆</li>
+            <li>多种载体可选（pET、pcDNA等）</li>
+            <li>支持多种宿主系统</li>
+            <li>序列100%准确验证</li>
+          </ul>
+          <ul class="service-features en">
+            <li>Gibson Assembly seamless cloning</li>
+            <li>Multiple vectors available (pET, pcDNA, etc.)</li>
+            <li>Multi-host system support</li>
+            <li>100% sequence verified</li>
+          </ul>
+          <span class="service-tag zh">Cloning</span>
+          <span class="service-tag en">Cloning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home Process -->
+  <section id="home-process" style="background:var(--blue-900)">
+    <div style="max-width:1200px;margin:0 auto;text-align:center">
+      <div class="section-label">
+        <span class="zh">服务流程</span><span class="en">How It Works</span>
+      </div>
+      <h2 class="section-title">
+        <span class="zh">简单四步，完成基因合成</span>
+        <span class="en">Four Simple Steps to Your Gene</span>
+      </h2>
+      <div class="process-flow" style="margin-top:50px">
+        <div class="process-step reveal">
+          <div class="step-num">1</div>
+          <h4 lang="zh">提交需求</h4>
+          <h4 class="en">Submit Request</h4>
+          <p class="zh">填写序列信息及项目要求</p>
+          <p class="en">Submit sequence & project details</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">2</div>
+          <h4 lang="zh">序列设计与报价</h4>
+          <h4 class="en">Design & Quote</h4>
+          <p class="zh">1个工作日内反馈报价</p>
+          <p class="en">Quote within 1 business day</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">3</div>
+          <h4 lang="zh">生产与质检</h4>
+          <h4 class="en">Synthesis & QC</h4>
+          <p class="zh">专业团队生产，全程质控</p>
+          <p class="en">Professional production, full QC</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">4</div>
+          <h4 lang="zh">交付与验证</h4>
+          <h4 class="en">Delivery</h4>
+          <p class="zh">Sanger测序验证，品质保证</p>
+          <p class="en">Sanger sequencing, guaranteed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ SERVICES PAGE ══════════ -->
+<div id="page-services" class="page">
+  <section style="padding-top:120px;background:var(--blue-900)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:60px">
+        <div class="section-label">
+          <span class="zh">服务项目</span><span class="en">Services</span>
+        </div>
+        <h2 class="section-title">
+          <span class="zh">全面的基因合成服务</span>
+          <span class="en">Comprehensive Gene Synthesis Services</span>
+        </h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🔬</div>
+          <h3 lang="zh">基因片段合成</h3>
+          <h3 lang="en">Gene Fragment Synthesis</h3>
+          <p class="zh">基于客户提供的目标序列，通过化学合成方式快速获得高纯度双链DNA片段。适用于多种分子生物学研究场景。</p>
+          <p class="en">Rapid synthesis of high-purity double-stranded DNA fragments from your target sequence via chemical synthesis. Suitable for various molecular biology applications.</p>
+          <ul class="service-features zh">
+            <li>片段长度：50 bp - 1.5 kb</li>
+            <li>保真率：≥99.9%（Sanger测序验证）</li>
+            <li>常规交付周期：5-7个工作日</li>
+            <li>支持磷酸化、硫代修饰</li>
+            <li>支持任意位点突变引入</li>
+            <li>批量订单价格优惠</li>
+          </ul>
+          <ul class="service-features en">
+            <li>Fragment length: 50 bp - 1.5 kb</li>
+            <li>Fidelity: ≥99.9% (Sanger verified)</li>
+            <li>Standard turnaround: 5-7 business days</li>
+            <li>Phosphorylation & thio-modification</li>
+            <li>Any-site mutation introduction</li>
+            <li>Volume discounts available</li>
+          </ul>
+          <span class="service-tag zh">Gene Fragment</span>
+          <span class="service-tag en">Fragment</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧫</div>
+          <h3 lang="zh">基因克隆 / 亚克隆</h3>
+          <h3 lang="en">Gene Cloning & Subcloning</h3>
+          <p class="zh">将合成的基因片段克隆至目标表达载体，实现基因功能的稳定表达。支持多种主流克隆技术及表达系统。</p>
+          <p class="en">Clone synthesized gene fragments into target expression vectors for stable gene expression. Supporting multiple cloning technologies and expression systems.</p>
+          <ul class="service-features zh">
+            <li>Gibson Assembly 无缝克隆</li>
+            <li>传统限制性酶切克隆</li>
+            <li>TOPO克隆、Gateway克隆</li>
+            <li>表达载体：pET、pcDNA、pYES等</li>
+            <li>宿主系统：大肠杆菌、酵母、昆虫细胞、哺乳动物细胞</li>
+            <li>100% Sanger测序验证</li>
+          </ul>
+          <ul class="service-features en">
+            <li>Gibson Assembly seamless cloning</li>
+            <li>Restriction enzyme cloning</li>
+            <li>TOPO & Gateway cloning</li>
+            <li>Vectors: pET, pcDNA, pYES, etc.</li>
+            <li>Hosts: E. coli, yeast, insect, mammalian</li>
+            <li>100% Sanger sequencing verified</li>
+          </ul>
+          <span class="service-tag zh">Cloning</span>
+          <span class="service-tag en">Cloning</span>
+        </div>
+      </div>
+
+      <!-- Service Comparison Table -->
+      <div style="margin-top:50px;background:rgba(10,22,40,.5);border:1px solid rgba(59,130,246,.15);border-radius:12px;overflow:hidden">
+        <table style="width:100%;border-collapse:collapse" class="products-table">
+          <thead>
+            <tr>
+              <th style="padding:16px 24px" class="zh">服务项目</th>
+              <th style="padding:16px 24px" class="en">Service</th>
+              <th style="padding:16px 24px" class="zh">规格 / 规格</th>
+              <th style="padding:16px 24px" class="en">Specification</th>
+              <th style="padding:16px 24px" class="zh">交付周期</th>
+              <th style="padding:16px 24px" class="en">Turnaround</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="zh">基因片段合成（常规）</td>
+              <td class="en">Gene Fragment (Standard)</td>
+              <td>50 bp - 1.5 kb</td>
+              <td>5-7 <span class="zh">个工作日</span><span class="en">business days</span></td>
+            </tr>
+            <tr>
+              <td class="zh">基因片段合成（快速）</td>
+              <td class="en">Gene Fragment (Express)</td>
+              <td>50 bp - 1.5 kb</td>
+              <td>3 <span class="zh">个工作日</span><span class="en">business days</span></td>
+            </tr>
+            <tr>
+              <td class="zh">全基因合成</td>
+              <td class="en">Whole Gene Synthesis</td>
+              <td>1.5 kb - 10 kb</td>
+              <td>7-14 <span class="zh">个工作日</span><span class="en">business days</span></td>
+            </tr>
+            <tr>
+              <td class="zh">基因克隆（普通）</td>
+              <td class="en">Gene Cloning (Standard)</td>
+              <td>含1个片段+1个载体</td>
+              <td>5-7 <span class="zh">个工作日</span><span class="en">business days</span></td>
+            </tr>
+            <tr>
+              <td class="zh">Gibson Assembly</td>
+              <td class="en">Gibson Assembly</td>
+              <td>2-10 <span class="zh">个片段</span><span class="en">fragments</span></td>
+              <td>7-10 <span class="zh">个工作日</span><span class="en">business days</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ PRODUCTS / ORDER PAGE ══════════ -->
+<div id="page-products" class="page">
+  <section style="padding-top:120px;background:var(--blue-800)">
+    <div class="products-container">
+      <div style="text-align:center;margin-bottom:50px">
+        <div class="section-label">
+          <span class="zh">产品与定价</span><span class="en">Products & Pricing</span>
+        </div>
+        <h2 class="section-title">
+          <span class="zh">透明定价 · 灵活选择</span>
+          <span class="en">Transparent Pricing · Flexible Options</span>
+        </h2>
+        <p class="zh" style="color:var(--gray-400);margin-top:10px">以下为基础参考价格，实际价格根据序列长度、修饰要求、交付周期等因素综合评估</p>
+        <p class="en" style="color:var(--gray-400);margin-top:10px">Base reference pricing. Final price based on sequence length, modifications, and turnaround time.</p>
+      </div>
+
+      <div class="products-table-wrap">
+        <table class="products-table">
+          <thead>
+            <tr>
+              <th class="zh">服务项目</th>
+              <th class="en">Service</th>
+              <th class="zh">规格说明</th>
+              <th class="en">Spec</th>
+              <th class="zh">参考价格</th>
+              <th class="en">Reference Price</th>
+              <th class="zh">快速</th>
+              <th class="en">Express</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="zh">基因片段合成（标准）</td>
+              <td class="en">Gene Fragment (Standard)</td>
+              <td>50 bp - 500 bp</td>
+              <td class="price-tag">¥180/bp</td>
+              <td>5-7 <span class="zh">个工作日</span><span class="en">days</span></td>
+              <td>¥280/bp</td>
+              <td><button class="order-btn" onclick="fillForm('gene-fragment')"><span class="zh">下单</span><span class="en">Order</span></button></td>
+            </tr>
+            <tr>
+              <td class="zh">基因片段合成</td>
+              <td class="en">Gene Fragment</td>
+              <td>501 bp - 1.5 kb</td>
+              <td class="price-tag">¥150/bp</td>
+              <td>5-7 <span class="zh">个工作日</span><span class="en">days</span></td>
+              <td>¥230/bp</td>
+              <td><button class="order-btn" onclick="fillForm('gene-fragment-lg')"><span class="zh">下单</span><span class="en">Order</span></button></td>
+            </tr>
+            <tr>
+              <td class="zh">全基因合成</td>
+              <td class="en">Whole Gene Synthesis</td>
+              <td>1.5 kb - 5 kb</td>
+              <td class="price-tag">¥120/bp</td>
+              <td>10-14 <span class="zh">个工作日</span><span class="en">days</span></td>
+              <td>¥180/bp</td>
+              <td><button class="order-btn" onclick="fillForm('whole-gene')"><span class="zh">下单</span><span class="en">Order</span></button></td>
+            </tr>
+            <tr>
+              <td class="zh">基因克隆（单片段）</td>
+              <td class="en">Gene Cloning (Single)</td>
+              <td>1片段+1载体</td>
+              <td class="price-tag">¥680/个</td>
+              <td>5-7 <span class="zh">个工作日</span><span class="en">days</span></td>
+              <td>¥980/个</td>
+              <td><button class="order-btn" onclick="fillForm('cloning-single')"><span class="zh">下单</span><span class="en">Order</span></button></td>
+            </tr>
+            <tr>
+              <td class="zh">Gibson Assembly</td>
+              <td class="en">Gibson Assembly</td>
+              <td>2-5 <span class="zh">个片段</span><span class="en">fragments</span></td>
+              <td class="price-tag">¥880/个起</td>
+              <td>7-10 <span class="zh">个工作日</span><span class="en">days</span></td>
+              <td>¥1,280/个起</td>
+              <td><button class="order-btn" onclick="fillForm('gibson')"><span class="zh">下单</span><span class="en">Order</span></button></td>
+            </tr>
+            <tr>
+              <td class="zh">基因亚克隆</td>
+              <td class="en">Subcloning</td>
+              <td>转移至新载体</td>
+              <td class="price-tag">¥580/个</td>
+              <td>3-5 <span class="zh">个工作日</span><span class="en">days</span></td>
+              <td>¥880/个</td>
+              <td><button class="order-btn" onclick="fillForm('subcloning')"><span class="zh">下单</span><span class="en">Order</span></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:30px;background:rgba(10,22,40,.5);border:1px solid rgba(59,130,246,.15);border-radius:12px;padding:28px 36px">
+        <p style="color:var(--blue-200);font-weight:600;margin-bottom:10px">
+          <span class="zh">💡 批量优惠说明</span>
+          <span class="en">💡 Volume Discounts</span>
+        </p>
+        <p class="zh" style="color:var(--gray-400);font-size:.875rem">
+          同一批次5个片段以上享受9折优惠；10个片段以上享受8折优惠；20个片段以上享受7折优惠。修饰类型和交付周期不同可能导致价格浮动，详请咨询客服。
+        </p>
+        <p class="en" style="color:var(--gray-400);font-size:.875rem">
+          5+ fragments: 10% off. 10+ fragments: 20% off. 20+ fragments: 30% off. Contact us for modifications and express options.
+        </p>
+      </div>
+
+      <div style="text-align:center;margin-top:40px">
+        <button class="btn-primary" onclick="showPage('contact')" style="font-size:1rem;padding:14px 36px">
+          <span class="zh">📩 联系我们获取定制报价</span>
+          <span class="en">📩 Contact Us for Custom Quote</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ ABOUT PAGE ══════════ -->
+<div id="page-about" class="page">
+  <section style="padding-top:120px;background:var(--blue-900)">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">
+          <span class="zh">关于我们</span><span class="en">About Us</span>
+        </div>
+        <h2 class="section-title">
+          <span class="zh">上海润安医学科技有限公司</span>
+          <span class="en">Shanghai Runan Medical Technology Ltd., Co.</span>
+        </h2>
+        <p class="zh">
+          上海润安医学科技有限公司是一家专注于基因合成与分子生物学服务的国家高新技术企业。公司位于上海张江科学城，依托资深科研团队和先进的合成生物学平台，为生命科学研究、药物开发和生物制造提供高质量的基因相关服务。
+        </p>
+        <p class="zh">
+          我们的核心团队由来自中科院、复旦大学、上海交通大学等知名院所的专业人才组成，在基因工程、分子克隆、蛋白质表达等领域拥有深厚的技术积累和丰富的项目经验。
+        </p>
+        <p class="en">
+          Shanghai Runan Medical Technology Ltd., Co. is a national high-tech enterprise specializing in gene synthesis and molecular biology services. Based in Shanghai Zhangjiang Science City, our experienced team and advanced synthetic biology platform deliver high-quality gene-related services for life science research, drug development, and biomanufacturing.
+        </p>
+        <p class="en">
+          Our core team consists of professionals from top institutions including CAS, Fudan University, and Shanghai Jiao Tong University, bringing deep technical expertise and extensive project experience in genetic engineering, molecular cloning, and protein expression.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="num" data-count="500">0+</div>
+            <div class="lbl zh">服务客户</div>
+            <div class="lbl en">Clients Served</div>
+          </div>
+          <div class="highlight-item">
+            <div class="num" data-count="10000">0+</div>
+            <div class="lbl zh">成功项目</div>
+            <div class="lbl en">Projects Completed</div>
+          </div>
+          <div class="highlight-item">
+            <div class="num" data-count="99.9">0%</div>
+            <div class="lbl zh">序列准确率</div>
+            <div class="lbl en">Accuracy Rate</div>
+          </div>
+          <div class="highlight-item">
+            <div class="num" data-count="10">0+</div>
+            <div class="lbl zh">年行业经验</div>
+            <div class="lbl en">Years Experience</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-img">
+        <div class="about-img-icon">🧬</div>
+        <h3 lang="zh">精准 · 高效 · 可靠</h3>
+        <h3 class="en">Precision · Efficiency · Reliability</h3>
+        <p class="zh" style="margin-top:10px">以技术创新驱动生命科学进步</p>
+        <p class="en" style="margin-top:10px">Advancing life science through innovation</p>
+        <div class="cert-badges">
+          <span class="cert-badge zh">ISO9001</span>
+          <span class="cert-badge en">ISO9001</span>
+          <span class="cert-badge zh">高新技术企业</span>
+          <span class="cert-badge en">High-Tech Enterprise</span>
+          <span class="cert-badge zh">GMP规范</span>
+          <span class="cert-badge en">GMP Compliant</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ CONTACT PAGE ══════════ -->
+<div id="page-contact" class="page">
+  <section style="padding-top:120px;background:var(--blue-800)">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">
+          <span class="zh">联系我们</span><span class="en">Contact Us</span>
+        </div>
+        <h2 class="section-title">
+          <span class="zh">开启您的基因合成项目</span>
+          <span class="en">Start Your Gene Synthesis Project</span>
+        </h2>
+        <p class="zh" style="color:var(--gray-400);margin-bottom:30px">
+          请填写以下表单或直接通过联系方式联系我们，专业团队将在1个工作日内回复。
+        </p>
+        <p class="en" style="color:var(--gray-400);margin-bottom:30px">
+          Fill out the form below or contact us directly. Our team responds within 1 business day.
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4 lang="zh">公司地址</h4>
+              <h4 class="en">Address</h4>
+              <p class="zh">上海市浦东新区张江高科技园区蔡伦路780号</p>
+              <p class="en">780 Cailun Road, Pudong New Area, Shanghai, China</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4 lang="zh">联系电话</h4>
+              <h4 class="en">Phone</h4>
+              <p>021-5888-XXXX</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4 lang="zh">商务邮箱</h4>
+              <h4 class="en">Business Email</h4>
+              <p>info@runanmed.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4 lang="zh">工作时间</h4>
+              <h4 class="en">Business Hours</h4>
+              <p class="zh">周一至周五 9:00-18:00</p>
+              <p class="en">Mon-Fri 9:00-18:00 CST</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div>
+              <h4 class="zh">在线客服</h4>
+              <h4 class="en">Online Support</h4>
+              <p class="zh">微信公众号：润安医学科技</p>
+              <p class="en">WeChat: RunanMedTech</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="zh">姓名 / Name *</label>
+              <label class="en">Name *</label>
+              <input type="text" name="name" required placeholder="张三 / Zhang San">
+            </div>
+            <div class="form-group">
+              <label class="zh">公司 / 单位</label>
+              <label class="en">Company / Institution</label>
+              <input type="text" name="company" placeholder="XX大学 / XX University">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="zh">邮箱 / Email *</label>
+              <label class="en">Email *</label>
+              <input type="email" name="email" required placeholder="example@company.com">
+            </div>
+            <div class="form-group">
+              <label class="zh">电话 / Phone</label>
+              <label class="en">Phone</label>
+              <input type="tel" name="phone" placeholder="138-xxxx-xxxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="zh">服务类型 / Service Type</label>
+            <label class="en">Service Type</label>
+            <select name="service">
+              <option value="">-- <span class="zh">请选择</span><span class="en">Select</span> --</option>
+              <option value="gene-fragment">基因片段合成 / Gene Fragment Synthesis</option>
+              <option value="whole-gene">全基因合成 / Whole Gene Synthesis</option>
+              <option value="cloning">基因克隆 / Gene Cloning</option>
+              <option value="gibson">Gibson Assembly</option>
+              <option value="subcloning">基因亚克隆 / Subcloning</option>
+              <option value="other">其他 / Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="zh">序列信息 / 需求描述 *</label>
+            <label class="en">Sequence / Requirements *</label>
+            <textarea name="message" required
+              placeholder="请提供目标基因序列（FASTA格式）或简要描述您的需求 / Please provide target gene sequence (FASTA) or describe your requirements"></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <span class="zh">🚀 提交咨询</span>
+            <span class="en">🚀 Submit Inquiry</span>
+          </button>
+          <p class="form-note zh">提交后1个工作日内回复 | Submit → Response within 1 business day</p>
+          <p class="form-note en">Response within 1 business day after submission</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">🧬 Shanghai Runan Medical Technology Ltd., Co.</div>
+  <p class="zh">上海润安医学科技有限公司 | 沪ICP备XXXXXXXX号</p>
+  <p class="en">Shanghai Runan Medical Technology Ltd., Co. | ICPXXXXXXXX</p>
+  <p style="margin-top:6px">
+    <span class="zh">© 2026 上海润安医学科技有限公司 保留所有权利</span>
+    <span class="en">© 2026 Shanghai Runan Medical Technology Ltd., Co. All rights reserved.</span>
+  </p>
+</footer>
+
+<script>
+// ── Page Navigation ──
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll(`.nav-links a[data-page="${name}"]`).forEach(a=>a.classList.add('active'));
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Re-trigger reveal animations
+  setTimeout(initReveal,100);
+}
+
+// ── Language Toggle ──
+function setLang(l){
+  document.body.classList.toggle('en', l==='en');
+  document.getElementById('langZh').classList.toggle('active', l==='zh');
+  document.getElementById('langEn').classList.toggle('active', l==='en');
+}
+
+// ── Mobile Menu ──
+function toggleMobile(){
+  const links=document.getElementById('navLinks');
+  const display=links.style.display;
+  links.style.display=display==='flex'?'none':'flex';
+  links.style.flexDirection='column';
+  links.style.position='absolute';
+  links.style.top='64px';
+  links.style.left='0';
+  links.style.right='0';
+  links.style.background='rgba(10,22,40,.98)';
+  links.style.padding='20px';
+  links.style.borderBottom='1px solid rgba(59,130,246,.2)';
+}
+
+// ── Scroll Reveal ──
+function initReveal(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.el.classList.add('visible');obs.unobserve(e.el)}});
+  },{threshold:.15});
+  els.forEach(el=>obs.observe(el));
+}
+
+// ── DNA Background ──
+function initDNA(){
+  const bg=document.getElementById('dnaBg');
+  for(let i=0;i<12;i++){
+    const strand=document.createElement('div');
+    strand.className='dna-strand';
+    strand.style.left=(i*9+5)+'%';
+    strand.style.animationDuration=(15+i*2)+'s';
+    strand.style.animationDelay=-(i*3)+'s';
+    for(let j=0;j<20;j++){
+      const dot=document.createElement('div');
+      dot.className='dna-dot';
+      dot.style.top=(j*50)+'px';
+      dot.style.left=(j%2===0?'30px':'60px');
+      strand.appendChild(dot);
+      if(j>0){
+        const line=document.createElement('div');
+        line.className='dna-line';
+        line.style.top=(j*50-25)+'px';
+        line.style.left='20px';
+        line.style.width='60px';
+        strand.appendChild(line);
+      }
+    }
+    bg.appendChild(strand);
+  }
+}
+
+// ── Form Submit ──
+function submitForm(e){
+  e.preventDefault();
+  const form=e.target;
+  const data=new FormData(form);
+  const info={
+    name:data.get('name'),
+    company:data.get('company'),
+    email:data.get('email'),
+    phone:data.get('phone'),
+    service:data.get('service'),
+    message:data.get('message')
+  };
+  // Visual feedback
+  const btn=form.querySelector('.form-submit');
+  const origText=btn.innerHTML;
+  btn.innerHTML='✅ <span class="zh">已提交！</span><span class="en">Submitted!</span>';
+  btn.style.background='linear-gradient(135deg,#059669,#10b981)';
+  btn.disabled=true;
+  // Show confirmation
+  setTimeout(()=>{
+    alert(
+      document.body.classList.contains('en')
+        ? 'Thank you! We will contact you within 1 business day.'
+        : '感谢您的咨询！我们将在1个工作日内与您联系。'
+    );
+    form.reset();
+    btn.innerHTML=origText;
+    btn.style.background='';
+    btn.disabled=false;
+  },500);
+}
+
+// ── Fill form from order table ──
+function fillForm(service){
+  const select=document.querySelector('select[name="service"]');
+  if(select) select.value=service;
+  showPage('contact');
+  setTimeout(()=>{
+    document.querySelector('textarea[name="message"]').focus();
+    document.querySelector('input[name="name"]').scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded',()=>{
+  initDNA();
+  initReveal();
+});
+</script>
+</body>
+</html>
